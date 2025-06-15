@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora del Ahorro - Calidad y Precio a tu Alcance</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Tailwind Configuration -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Color de fondo base (gris muy claro) */
+        }
+        /* Clase para las animaciones de entrada */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Estilo para la barra de navegación "pegajosa" */
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+    <script>
+      // Configuración de Tailwind para extender colores y fuentes si es necesario
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#005A9C', // Un azul corporativo fuerte
+              secondary: '#FFC72C', // Un amarillo vibrante para acentos
+              dark: '#1a202c',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER & NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-gray-800 transition-colors hover:text-primary">
+                    <svg class="h-8 w-auto inline-block mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0L22 13.41a1 1 0 0 0 0-1.41L12 2z"></path><path d="M7 7h.01"></path></svg>
+                    Ahorro<span class="font-light">Max</span>
+                </a>
+                
+                <!-- Links de Navegación (Desktop) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="PaginaWeb.html" class="text-gray-600 hover:text-primary transition-colors">Inicio</a>
+                    <a href="productos.html" class="text-gray-600 hover:text-primary transition-colors">Productos</a>
+                    <a href="Categoria.html" class="text-gray-600 hover:text-primary transition-colors">Categorías</a>
+                    <a href="nosotros.html" class="text-gray-600 hover:text-primary transition-colors">Nosotros</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-primary transition-colors">Contacto</a>
+                </div>
+
+                <!-- Carrito y Menú Hamburguesa -->
+                <div class="flex items-center space-x-4">
+                     <a href="Carrito.html" class="relative text-gray-600 hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span class="absolute -top-2 -right-2 bg-secondary text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Menú Móvil -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-4">
+                <a href="PaginaWeb.html" class="text-gray-600 hover:text-primary transition-colors block">Inicio</a>
+                <a href="productos.html" class="text-gray-600 hover:text-primary transition-colors block">Productos</a>
+                <a href="Categoria.html" class="text-gray-600 hover:text-primary transition-colors block">Categorías</a>
+                <a href="nosotros.html" class="text-gray-600 hover:text-primary transition-colors block">Nosotros</a>
+                <a href="contacto.html" class="text-gray-600 hover:text-primary transition-colors block">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="inicio" class="pt-24 md:pt-32 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <div class="bg-gradient-to-r from-primary to-blue-500 rounded-lg shadow-xl p-12 md:p-20 text-white fade-in-section">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Tu Tienda de Confianza</h1>
+                    <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Encuentra productos de alta calidad a precios que cuidan tu bolsillo. ¡Las mejores ofertas, todos los días!</p>
+                    <a href="#productos" class="bg-secondary hover:bg-yellow-400 text-primary font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 inline-block">Explorar Productos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTOS DESTACADOS -->
+        <section id="productos" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark">Productos Destacados</h2>
+                    <p class="text-gray-600 mt-2">Los favoritos de nuestros clientes.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Producto 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 fade-in-section">
+                        <img src="https://i.blogs.es/e28169/camas-para-perros/1366_2000.jpeg" alt="Celular Galaxy S24 Ultra" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Producto';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Celular Galaxy S24 Ultra</h3>
+                            <p class="text-gray-600 mb-4">La última tecnología en tus manos. Rendimiento y cámaras espectaculares.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-primary">L. 35,000</span>
+                                <a href="#" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors flex items-center">
+                                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                    Ver más
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Producto 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 fade-in-section" style="transition-delay: 100ms;">
+                        <img src="https://i.blogs.es/e28169/camas-para-perros/1366_2000.jpeg" alt="Cama Matrimonial" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Producto';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Cama Matrimonial Olimpia</h3>
+                            <p class="text-gray-600 mb-4">Descanso garantizado con el máximo confort y durabilidad.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-primary">L. 8,500</span>
+                                <a href="#" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors flex items-center">
+                                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                    Ver más
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Producto 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 fade-in-section" style="transition-delay: 200ms;">
+                        <img src="https://www.cocinayvino.com/wp-content/uploads/2017/12/www.cocinayvino.com-wp-content-uploads-2017-09-estufas-modernas-con-acero-inoxidable-en-la-cocina-e1514330663738.jpg" alt="Estufa MABE" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Producto';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Estufa MABE 6 Quemadores</h3>
+                            <p class="text-gray-600 mb-4">Cocina como un profesional con esta estufa moderna y eficiente.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-primary">L. 12,200</span>
+                                <a href="#" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors flex items-center">
+                                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                    Ver más
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS -->
+        <section id="categorias" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark">Explora por Categoría</h2>
+                    <p class="text-gray-600 mt-2">Encuentra exactamente lo que necesitas.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <!-- Categoría 1 -->
+                    <a href="alimentos.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section">
+                        <svg class="h-12 w-12 mx-auto text-primary mb-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.58 2.04a1 1 0 0 0-1.16 1.16L16 12h-8L9.58 3.2a1 1 0 0 0-1.16-1.16l-6 2a1 1 0 0 0-.42 1.16L4 12h16l2-6.64a1 1 0 0 0-.42-1.16l-6-2z"></path><path d="m5 12 1 9.32a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1L19 12"></path></svg>
+                        <h4 class="font-semibold text-lg">Alimentos</h4>
+                    </a>
+                    <!-- Categoría 2 -->
+                    <a href="limpieza.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section" style="transition-delay: 100ms;">
+                         <svg class="h-12 w-12 mx-auto text-primary mb-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.46 2.22 3.2 9.44a2 2 0 0 0 0 2.82l9.26 7.22a2 2 0 0 0 2.82 0l9.26-7.22a2 2 0 0 0 0-2.82L15.28 2.22a2 2 0 0 0-2.82 0z"></path><path d="m12 14 4 3.1-4.7 3.65a1 1 0 0 1-1.3 0L5.3 17.1 9.3 14"></path><path d="M2.22 12.46 12 20l9.78-7.54"></path><path d="m12 2 9.78 7.54L12 17.08 2.22 9.46 12 2z"></path></svg>
+                        <h4 class="font-semibold text-lg">Limpieza</h4>
+                    </a>
+                    <!-- Categoría 3 -->
+                    <a href="hogar.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section" style="transition-delay: 200ms;">
+                        <svg class="h-12 w-12 mx-auto text-primary mb-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <h4 class="font-semibold text-lg">Hogar</h4>
+                    </a>
+                     <!-- Categoría 4 -->
+                    <a href="electronica.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section" style="transition-delay: 300ms;">
+                        <svg class="h-12 w-12 mx-auto text-primary mb-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        <h4 class="font-semibold text-lg">Electrónica</h4>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE NOSOTROS -->
+        <section id="nosotros" class="py-20">
+             <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 fade-in-section">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop" class="rounded-lg shadow-xl" alt="Equipo de la tienda" onerror="this.onerror=null;this.src='https://placehold.co/600x400/005A9C/ffffff?text=Nosotros';">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Comprometidos con tu Ahorro</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">En Distribuidora del Ahorro, nuestra misión es simple: ofrecer a las familias hondureñas productos de la más alta calidad a precios justos y accesibles. Creemos que todos merecen lo mejor sin tener que pagar de más.</p>
+                        <p class="text-gray-600 leading-relaxed">Con años de experiencia en el mercado, hemos construido una red de confianza con proveedores y clientes, garantizando siempre un catálogo variado y un servicio al cliente excepcional.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark">¿Tienes Preguntas?</h2>
+                    <p class="text-gray-600 mt-2">Estamos aquí para ayudarte. Contáctanos.</p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 fade-in-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Formulario -->
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="nombre" class="block text-gray-700 font-medium mb-2">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="correo" class="block text-gray-700 font-medium mb-2">Correo Electrónico</label>
+                                <input type="email" id="correo" name="correo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="mensaje" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors">Enviar Mensaje</button>
+                            <p id="form-status" class="text-center mt-4"></p>
+                        </form>
+                        <!-- Información de Contacto -->
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-semibold text-dark">Información de Contacto</h3>
+                            <div class="flex items-start space-x-4">
+                                <svg class="h-6 w-6 text-primary mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <div>
+                                    <h4 class="font-semibold">Dirección</h4>
+                                    <p class="text-gray-600">Av. Principal #123, Tegucigalpa, Honduras</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start space-x-4">
+                                <svg class="h-6 w-6 text-primary mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Teléfono</h4>
+                                    <p class="text-gray-600">+504 2234-5678</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start space-x-4">
+                                <svg class="h-6 w-6 text-primary mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Correo</h4>
+                                    <p class="text-gray-600">contacto@ahorromax.hn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Sobre la empresa -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">AhorroMax</h4>
+                    <p class="text-gray-400">Calidad y precios bajos para el hogar hondureño. Tu ahorro es nuestra prioridad.</p>
+                </div>
+                <!-- Links Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#productos" class="text-gray-400 hover:text-white transition-colors">Productos</a></li>
+                        <li><a href="#categorias" class="text-gray-400 hover:text-white transition-colors">Categorías</a></li>
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-white transition-colors">Nosotros</a></li>
+                        <li><a href="#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <!-- Legal -->
+                 <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Política de Devoluciones</a></li>
+                    </ul>
+                </div>
+                <!-- Redes Sociales -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.625c-3.141 0-3.48.012-4.698.067-2.694.123-3.999 1.45-4.122 4.122-.056 1.218-.067 1.556-.067 4.698s.011 3.48.067 4.698c.123 2.672 1.428 3.999 4.122 4.122 1.218.056 1.557.067 4.698.067s3.48-.011 4.698-.067c2.694-.123 3.999-1.45 4.122-4.122.056-1.218.067-1.556.067-4.698s-.011-3.48-.067-4.698c-.123-2.672-1.428-3.999-4.122-4.122C15.48 3.799 15.141 3.788 12 3.788zm0 2.975c-2.731 0-4.949 2.218-4.949 4.949s2.218 4.949 4.949 4.949 4.949-2.218 4.949-4.949-2.218-4.949-4.949-4.949zm0 8.24c-1.815 0-3.291-1.476-3.291-3.291s1.476-3.291 3.291-3.291 3.291 1.476 3.291 3.291-1.476 3.291-3.291 3.291zm4.646-7.859a1.148 1.148 0 1 1-2.296 0 1.148 1.148 0 0 1 2.296 0z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="year"></span> AhorroMax. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+
+            // --- Sticky Navbar ---
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Smooth scroll for mobile menu links ---
+            mobileMenu.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                   mobileMenu.classList.add('hidden');
+                });
+            });
+
+
+            // --- Animate on Scroll ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // --- Contact Form Submission (Simulation) ---
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                formStatus.textContent = 'Enviando...';
+                formStatus.className = 'text-blue-600';
+
+                setTimeout(() => {
+                    formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado.';
+                    formStatus.className = 'text-green-600';
+                    contactForm.reset();
+                     setTimeout(() => {
+                        formStatus.textContent = '';
+                    }, 5000);
+                }, 1500);
+            });
+
+            // --- Set current year in footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría - Distribuidora del Ahorro</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Tailwind Configuration -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+    <script>
+      // Configuración de Tailwind
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#005A9C',
+              secondary: '#FFC72C',
+              dark: '#1a202c',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER & NAVBAR (Consistente con las otras páginas) -->
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 transition-all duration-300 navbar-scrolled">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="text-2xl font-bold text-gray-800 transition-colors hover:text-primary">
+                    <svg class="h-8 w-auto inline-block mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0L22 13.41a1 1 0 0 0 0-1.41L12 2z"></path><path d="M7 7h.01"></path></svg>
+                    Ahorro<span class="font-light">Max</span>
+                </a>
+                
+                <!-- Links de Navegación (Desktop) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="PaginaWeb.html" class="text-gray-600 hover:text-primary transition-colors">Inicio</a>
+                    <a href="productos.html" class="text-gray-600 hover:text-primary transition-colors">Productos</a>
+                    <a href="Categoria.html" class="text-gray-600 hover:text-primary transition-colors">Categorías</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-primary transition-colors">Contacto</a>
+                </div>
+
+                <!-- Carrito -->
+                <div class="flex items-center space-x-4">
+                     <a href="Carrito.html" class="relative text-gray-600 hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-secondary text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+   <section id="categorias" class="container mx-auto px-6 py-12 md:py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-dark">Categorías</h2>
+        <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Explora todos los departamentos disponibles en nuestra tienda.</p>
+    </div>
+
+    <div id="category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"></div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const categories = [
+            { name: "Alimentos", image: "https://cdn-icons-png.flaticon.com/512/1046/1046857.png", link: "alimentos.html" },
+            { name: "Limpieza", image: "https://cdn-icons-png.flaticon.com/512/2872/2872321.png", link: "limpieza.html" },
+            { name: "Hogar", image: "https://cdn-icons-png.flaticon.com/512/1946/1946436.png", link: "hogar.html" },
+            { name: "Electrodomésticos", image: "https://cdn-icons-png.flaticon.com/512/893/893304.png", link: "electrodomesticos.html" },
+            { name: "Bebés", image: "https://cdn-icons-png.flaticon.com/512/2965/2965567.png", link: "bebes.html" },
+            { name: "Mascotas", image: "https://cdn-icons-png.flaticon.com/512/616/616408.png", link: "mascotas.html" },
+            { name: "Bebidas", image: "https://cdn-icons-png.flaticon.com/512/3050/3050525.png", link: "bebidas.html" },
+            { name: "Cuidado Personal", image: "https://cdn-icons-png.flaticon.com/512/4018/4018337.png", link: "cuidado.html" },
+            { name: "Papelería", image: "https://cdn-icons-png.flaticon.com/512/3176/3176367.png", link: "papeleria.html" },
+            { name: "Juguetes", image: "https://cdn-icons-png.flaticon.com/512/1612/1612023.png", link: "juguetes.html" }
+        ];
+
+        const categoryGrid = document.getElementById('category-grid');
+        if (categoryGrid) {
+            categories.forEach(cat => {
+                const card = document.createElement('a');
+                card.href = cat.link;
+                card.className = 'bg-white p-4 rounded-xl shadow-md text-center hover:shadow-xl hover:-translate-y-1 transform transition';
+                card.innerHTML = `
+                    <img src="${cat.image}" alt="${cat.name}" class="w-20 h-20 mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/100x100/cccccc/ffffff?text=${cat.name}'">
+                    <h3 class="text-lg font-semibold text-gray-800">${cat.name}</h3>
+                `;
+                categoryGrid.appendChild(card);
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

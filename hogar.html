@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría - Distribuidora del Ahorro</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Tailwind Configuration -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+    <script>
+      // Configuración de Tailwind
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#005A9C',
+              secondary: '#FFC72C',
+              dark: '#1a202c',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER & NAVBAR (Consistente con las otras páginas) -->
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 transition-all duration-300 navbar-scrolled">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="text-2xl font-bold text-gray-800 transition-colors hover:text-primary">
+                    <svg class="h-8 w-auto inline-block mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0L22 13.41a1 1 0 0 0 0-1.41L12 2z"></path><path d="M7 7h.01"></path></svg>
+                    Ahorro<span class="font-light">Max</span>
+                </a>
+                
+                <!-- Links de Navegación -->
+                <div class="hidden md:flex items-center space-x-8">
+                   <a href="PaginaWeb.html" class="text-gray-600 hover:text-primary transition-colors">Inicio</a>
+                    <a href="productos.html" class="text-gray-600 hover:text-primary transition-colors">Productos</a>
+                    <a href="Categoria.html" class="text-gray-600 hover:text-primary transition-colors">Categorías</a>
+                    <a href="nosotros.html" class="text-gray-600 hover:text-primary transition-colors">Nosotros</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-primary transition-colors">Contacto</a>
+                </div>
+
+
+                <!-- Carrito -->
+                <div class="flex items-center space-x-4">
+                     <a href="Carrito.html" class="relative text-gray-600 hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-secondary text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-16">
+        <!-- Título de la Categoría -->
+        <div class="text-center mb-12">
+            <h1 id="category-title" class="text-4xl md:text-5xl font-extrabold text-dark">Hogar</h1>
+            <p id="category-description" class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Lo último en tecnología y los mejores gadgets para tu día a día.</p>
+        </div>
+
+        <!-- Filtros y Ordenamiento -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 p-4 bg-white rounded-lg shadow-sm">
+            <div class="text-gray-600 mb-4 md:mb-0">
+                <span id="product-count" class="font-semibold">0</span> productos encontrados
+            </div>
+            <div class="flex items-center gap-4">
+                <label for="sort-by" class="text-gray-600">Ordenar por:</label>
+                <select id="sort-by" class="border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                    <option value="featured">Destacados</option>
+                    <option value="price-asc">Precio: Menor a Mayor</option>
+                    <option value="price-desc">Precio: Mayor a Menor</option>
+                    <option value="name-asc">Nombre: A-Z</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Los productos se insertarán aquí dinámicamente -->
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                 <p>&copy; <span id="year"></span> AhorroMax. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- DATOS DE EJEMPLO PARA LA CATEGORÍA "HOGAR" ---
+        const categoryData = {
+            title: 'Hogar',
+            description: 'Dale vida a tus espacios con productos pensados para tu comodidad, estilo y bienestar.',
+            products: [
+                {
+                    id: 1,
+                    name: 'Juego de Sábanas 100% Algodón Queen',
+                    price: 320,
+                    image: 'https://www.falabella.com.hn/falabella-hn/product/880376100/Juego-de-Sabanas-Queen/880376101',
+                    description: 'Suavidad premium y frescura para un descanso de lujo todas las noches.'
+                },
+                {
+                    id: 2,
+                    name: 'Lámpara de Mesa LED Recargable',
+                    price: 210,
+                    image: 'https://images.squarespace-cdn.com/content/v1/5ea6f85b3d97a07a426b46e2/1597273680977-Q2RS0E6W7KNP65Q3Z5L9/L%C3%A1mpara+LED+de+mesa.jpg',
+                    description: 'Ilumina tus espacios con estilo moderno y eficiencia energética.'
+                },
+                {
+                    id: 3,
+                    name: 'Cortina Blackout con Ojales 1.40 x 2.30 m',
+                    price: 275,
+                    image: 'https://hogarydecoracion.com/wp-content/uploads/2023/04/cortinas-blackout-modernas.jpg',
+                    description: 'Controla la luz y mejora la estética de tu hogar con estas cortinas elegantes.'
+                },
+                {
+                    id: 4,
+                    name: 'Organizador Multiusos de Plástico 4 Niveles',
+                    price: 180,
+                    image: 'https://images.easy.com.ar/productos/8722014.jpg',
+                    description: 'Mantén todo en orden: cocina, baño o dormitorio, ¡tú eliges!'
+                },
+                {
+                    id: 5,
+                    name: 'Alfombra Decorativa 120x160cm Antideslizante',
+                    price: 340,
+                    image: 'https://cdnx.jumpseller.com/factorystore/image/36374689/alfombra-sala-estampado-geometrico-120x160cm.jpg',
+                    description: 'Diseño elegante y textura suave para cualquier ambiente del hogar.'
+                },
+                {
+                    id: 6,
+                    name: 'Set de 3 Velas Aromáticas Relax & Fresh',
+                    price: 150,
+                    image: 'https://aromaterapiaymas.com/wp-content/uploads/2022/07/velas-aromaticas-3.jpg',
+                    description: 'Crea una atmósfera relajante y acogedora con estas fragancias suaves.'
+                }
+            ]
+        };
+
+        // --- REFERENCIAS A ELEMENTOS DEL DOM ---
+        const productGrid = document.getElementById('product-grid');
+        const categoryTitle = document.getElementById('category-title');
+        const categoryDescription = document.getElementById('category-description');
+        const productCount = document.getElementById('product-count');
+        const sortBySelect = document.getElementById('sort-by');
+
+        // --- FUNCIÓN PARA RENDERIZAR PRODUCTOS ---
+        function renderProducts(products) {
+            productGrid.innerHTML = ''; // Limpiar grid
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 flex flex-col';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Producto';">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">${product.description}</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-2xl font-bold text-primary">L ${product.price.toFixed(2)}</span>
+                            <a href="#" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition-colors flex items-center text-sm">
+                                <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                Agregar
+                            </a>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+
+            productCount.textContent = products.length;
+        }
+
+        // --- FUNCIÓN PARA ORDENAR PRODUCTOS ---
+        function sortProducts() {
+            const sortBy = sortBySelect.value;
+            let sortedProducts = [...categoryData.products];
+
+            switch(sortBy) {
+                case 'price-asc':
+                    sortedProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    sortedProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name-asc':
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+            }
+            renderProducts(sortedProducts);
+        }
+
+        // --- INICIALIZACIÓN ---
+        function init() {
+            categoryTitle.textContent = categoryData.title;
+            categoryDescription.textContent = categoryData.description;
+            sortBySelect.addEventListener('change', sortProducts);
+            renderProducts(categoryData.products);
+            document.getElementById('year').textContent = new Date().getFullYear();
+        }
+
+        init();
+    });
+</script>
+
+</body>
+</html>
